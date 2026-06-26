@@ -88,8 +88,9 @@
   }
   .cover-meta {
     display: flex;
-    gap: 3rem;
+    gap: 2.6rem;
     position: relative;
+    flex-wrap: wrap;
   }
   .cover-meta-item {
     font-size: 0.68rem;
@@ -159,11 +160,11 @@
     gap: 1px;
     background: #d4e0e2;
     border: 1px solid #d4e0e2;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.6rem;
   }
   .summary-card {
     background: var(--white);
-    padding: 2rem 1.8rem;
+    padding: 1.7rem 1.8rem;
     text-align: center;
   }
   .summary-card.dark {
@@ -195,7 +196,7 @@
     font-weight: 600;
     font-size: 1rem;
     color: var(--cypress);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.55rem;
     padding-left: 0.8rem;
     border-left: 3px solid var(--coral);
   }
@@ -203,7 +204,7 @@
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-size: 0.78rem;
   }
   thead th {
@@ -218,17 +219,24 @@
     white-space: nowrap;
   }
   thead th:first-child { text-align: left; }
+  thead th.basis { text-align: left; }
   tbody td {
-    padding: 0.6rem 0.8rem;
+    padding: 0.48rem 0.8rem;
     border-bottom: 1px solid #eae7e2;
     text-align: right;
     color: var(--muted);
-    line-height: 1.4;
+    line-height: 1.35;
   }
   tbody td:first-child {
     text-align: left;
     color: var(--cypress);
     font-weight: 400;
+  }
+  tbody td.basis {
+    text-align: left;
+    font-size: 0.68rem;
+    color: var(--mid);
+    line-height: 1.35;
   }
   tbody tr:last-child td {
     border-bottom: 2px solid var(--cypress);
@@ -245,84 +253,62 @@
     margin-top: 0.5rem;
   }
 
-  /* ─── ANNUAL BREAKDOWN ─── */
-  .annual-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: #d4e0e2;
-    border: 1px solid #d4e0e2;
-    margin-bottom: 2rem;
+  /* ─── CATEGORY TOTALS TABLE ─── */
+  .totals-table {
+    margin-top: 1rem;
   }
-  .annual-card {
-    background: var(--white);
-    padding: 1.8rem;
-  }
-  .annual-year {
-    font-size: 0.62rem;
+  .totals-table tbody td:first-child {
     font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--coral);
-    margin-bottom: 0.6rem;
   }
-  .annual-total {
-    font-family: var(--fh);
+  .totals-table tbody tr:last-child td {
+    border-bottom: 3px double var(--cypress);
     font-weight: 700;
-    font-size: 1.6rem;
-    color: var(--cypress);
-    margin-bottom: 1rem;
-    letter-spacing: -0.02em;
+    font-size: 0.85rem;
   }
-  .annual-bar {
-    height: 6px;
-    background: var(--off-white);
-    border-radius: 3px;
-    margin-bottom: 0.8rem;
+
+  /* ─── FUNDING STRUCTURE ─── */
+  .split-bar {
+    height: 14px;
+    border-radius: 7px;
+    margin: 0.4rem 0 1.4rem;
     overflow: hidden;
     display: flex;
   }
-  .annual-bar-wff {
-    background: var(--coral);
-    height: 100%;
-  }
-  .annual-bar-match {
-    background: var(--cypress);
-    height: 100%;
-  }
-  .annual-detail {
-    font-size: 0.72rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-  .annual-detail strong { color: var(--cypress); font-weight: 500; }
+  .split-bar-wff { background: var(--coral); height: 100%; }
+  .split-bar-match { background: var(--cypress); height: 100%; }
 
-  /* ─── TAPER VISUAL ─── */
-  .taper-section {
+  .funding-section {
     background: var(--cypress);
-    padding: 2rem 2.5rem;
-    margin-top: 1.5rem;
+    padding: 1.5rem 2.5rem;
+    margin-top: 1.2rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
-  .taper-item { text-align: center; }
-  .taper-yr {
+  .funding-item { text-align: center; }
+  .funding-key {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+  }
+  .funding-yr {
     font-size: 0.6rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.45);
     margin-bottom: 0.4rem;
   }
-  .taper-pct {
+  .funding-amt {
     font-family: var(--fh);
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: var(--white);
     margin-bottom: 0.15rem;
   }
-  .taper-pct span { color: var(--coral); }
-  .taper-lbl {
+  .funding-amt span { color: var(--coral); }
+  .funding-lbl {
     font-size: 0.65rem;
     color: rgba(255,255,255,0.4);
   }
@@ -346,24 +332,11 @@
     margin: 0 1.5rem;
   }
 
-  /* ─── CATEGORY TOTALS TABLE ─── */
-  .totals-table {
-    margin-top: 1rem;
-  }
-  .totals-table tbody td:first-child {
-    font-weight: 500;
-  }
-  .totals-table tbody tr:last-child td {
-    border-bottom: 3px double var(--cypress);
-    font-weight: 700;
-    font-size: 0.85rem;
-  }
-
   /* ─── ASSUMPTIONS ─── */
   .assumptions {
     background: var(--off-white);
-    padding: 1.8rem 2rem;
-    margin-top: 1.5rem;
+    padding: 1.4rem 2rem;
+    margin-top: 1rem;
   }
   .assumptions-title {
     font-family: var(--fh);
@@ -376,7 +349,7 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.38rem;
   }
   .assumptions li {
     font-size: 0.72rem;
@@ -401,25 +374,25 @@
 <!-- ══════════ COVER ══════════ -->
 <div class="cover">
   <div class="cover-line"></div>
-  <p class="cover-eyebrow">Budget Overview</p>
+  <p class="cover-eyebrow">Budget Overview · One-Year Pilot</p>
   <h1 class="cover-title">Land <span class="plus">+</span> Launch NWA</h1>
-  <p class="cover-sub">Three-year expense budget for Land + Launch NWA — a global innovation sharing initiative of the Greater Bentonville Area Chamber of Commerce and Arkade.</p>
+  <p class="cover-sub">Twelve-month pilot budget for Land + Launch NWA — a global innovation exchange initiative administered by SEED SPOT as fiduciary and delivered through Arkade.</p>
   <div class="cover-meta">
     <div class="cover-meta-item">
       <strong>Program Duration</strong>
-      36 Months (3 Years)
+      12 Months (Pilot)
     </div>
     <div class="cover-meta-item">
       <strong>Total Program Budget</strong>
-      $2,303,107
+      $1,494,000
     </div>
     <div class="cover-meta-item">
       <strong>WFF Grant Request</strong>
-      ~$1.5M
+      $973,000
     </div>
     <div class="cover-meta-item">
-      <strong>Arkade + Chamber Match</strong>
-      $821,970
+      <strong>Arkade In-Kind Match</strong>
+      $521,000
     </div>
   </div>
 </div>
@@ -429,133 +402,108 @@
   <div class="page-header">
     <div>
       <div class="page-label">Program Budget</div>
-      <h2 class="page-title">Three-Year Funding Overview</h2>
+      <h2 class="page-title">One-Year Pilot Funding Overview</h2>
     </div>
     <div class="page-num">01</div>
   </div>
 
   <div class="summary-row">
     <div class="summary-card dark">
-      <div class="summary-num">$2.30<span>M</span></div>
+      <div class="summary-num">$1.49<span>M</span></div>
       <div class="summary-lbl">Total Program Budget</div>
     </div>
     <div class="summary-card">
-      <div class="summary-num">$1.5<span>M</span></div>
+      <div class="summary-num">$973<span>K</span></div>
       <div class="summary-lbl">WFF Grant Request</div>
     </div>
     <div class="summary-card">
-      <div class="summary-num">$821<span>K</span></div>
-      <div class="summary-lbl">Arkade + Chamber Match</div>
+      <div class="summary-num">$521<span>K</span></div>
+      <div class="summary-lbl">Arkade In-Kind Match</div>
     </div>
   </div>
 
   <!-- Category Totals -->
-  <div class="section-title">Budget by Category (3-Year Total)</div>
+  <div class="section-title">Budget by Category (12-Month Pilot)</div>
   <table class="totals-table">
     <thead>
       <tr>
         <th>Category</th>
-        <th>3-Yr Total</th>
         <th>WFF Grant</th>
-        <th>Match</th>
+        <th>Arkade In-Kind</th>
+        <th>Total</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>Personnel</td>
-        <td>$1,010,724</td>
-        <td>$650,001</td>
-        <td>$360,724</td>
+        <td>$268,000</td>
+        <td>$221,000</td>
+        <td>$489,000</td>
       </tr>
       <tr>
         <td>Program Infrastructure</td>
-        <td>$371,294</td>
-        <td>$238,781</td>
-        <td>$132,513</td>
+        <td>$120,000</td>
+        <td>$300,000</td>
+        <td>$420,000</td>
       </tr>
       <tr>
-        <td>Events &amp; Gatherings</td>
-        <td>$429,635</td>
-        <td>$276,300</td>
-        <td>$153,335</td>
+        <td>Events &amp; Education</td>
+        <td>$271,000</td>
+        <td>—</td>
+        <td>$271,000</td>
       </tr>
       <tr>
-        <td>Travel &amp; Outreach</td>
-        <td>$213,272</td>
-        <td>$137,156</td>
-        <td>$76,116</td>
+        <td>Travel &amp; Transition Support</td>
+        <td>$174,000</td>
+        <td>—</td>
+        <td>$174,000</td>
       </tr>
       <tr>
-        <td>Administration</td>
-        <td>$278,181</td>
-        <td>$178,899</td>
-        <td>$99,282</td>
+        <td>Administration (SEED SPOT fiduciary)</td>
+        <td>$140,000</td>
+        <td>—</td>
+        <td>$140,000</td>
       </tr>
       <tr>
         <td>Grand Total</td>
-        <td>$2,303,107</td>
-        <td>$1,481,137</td>
-        <td>$821,970</td>
+        <td>$973,000</td>
+        <td>$521,000</td>
+        <td>$1,494,000</td>
       </tr>
     </tbody>
   </table>
 
-  <!-- Annual Breakdown -->
-  <div class="section-title">Annual Breakdown &amp; Funding Taper</div>
-  <div class="annual-grid">
-    <div class="annual-card">
-      <div class="annual-year">Year 1 — Launch</div>
-      <div class="annual-total">$745,125</div>
-      <div class="annual-bar">
-        <div class="annual-bar-wff" style="width:100%;"></div>
-      </div>
-      <div class="annual-detail">
-        <strong>WFF Grant:</strong> $745,125 (100%)<br>
-        <strong>Match:</strong> $0 (0%)
-      </div>
+  <!-- Funding Structure -->
+  <div class="section-title">Funding Structure — 100% + In-Kind</div>
+  <p class="note">The WFF grant funds 100% of the program's cash costs. Arkade contributes a substantial in-kind match — dedicated workspace and Director/staff time — equal to roughly one in-kind dollar for every two grant dollars.</p>
+  <div class="split-bar">
+    <div class="split-bar-wff" style="width:65%;"></div>
+    <div class="split-bar-match" style="width:35%;"></div>
+  </div>
+
+  <div class="funding-section">
+    <div class="funding-item">
+      <div class="funding-yr"><span class="funding-key" style="background:var(--coral);"></span>WFF Grant</div>
+      <div class="funding-amt">$973<span>K</span></div>
+      <div class="funding-lbl">65% of total · funds cash program delivery</div>
     </div>
-    <div class="annual-card">
-      <div class="annual-year">Year 2 — Scale</div>
-      <div class="annual-total">$767,479</div>
-      <div class="annual-bar">
-        <div class="annual-bar-wff" style="width:65%;"></div>
-        <div class="annual-bar-match" style="width:35%;"></div>
-      </div>
-      <div class="annual-detail">
-        <strong>WFF Grant:</strong> $498,861 (65%)<br>
-        <strong>Match:</strong> $268,618 (35%)
-      </div>
-    </div>
-    <div class="annual-card">
-      <div class="annual-year">Year 3 — Sustain</div>
-      <div class="annual-total">$790,503</div>
-      <div class="annual-bar">
-        <div class="annual-bar-wff" style="width:30%;"></div>
-        <div class="annual-bar-match" style="width:70%;"></div>
-      </div>
-      <div class="annual-detail">
-        <strong>WFF Grant:</strong> $237,151 (30%)<br>
-        <strong>Match:</strong> $553,352 (70%)
-      </div>
+    <div class="funding-item">
+      <div class="funding-yr"><span class="funding-key" style="background:#7fa3a8;"></span>Arkade In-Kind</div>
+      <div class="funding-amt">$521<span>K</span></div>
+      <div class="funding-lbl">35% of total · workspace + Director/staff time</div>
     </div>
   </div>
 
-  <div class="taper-section">
-    <div class="taper-item">
-      <div class="taper-yr">Year 1</div>
-      <div class="taper-pct">100<span>%</span></div>
-      <div class="taper-lbl">WFF Funded</div>
-    </div>
-    <div class="taper-item">
-      <div class="taper-yr">Year 2</div>
-      <div class="taper-pct">65<span>%</span></div>
-      <div class="taper-lbl">WFF / 35% Match</div>
-    </div>
-    <div class="taper-item">
-      <div class="taper-yr">Year 3</div>
-      <div class="taper-pct">30<span>%</span></div>
-      <div class="taper-lbl">WFF / 70% Match</div>
-    </div>
+  <div class="assumptions">
+    <div class="assumptions-title">Budget Assumptions</div>
+    <ul>
+      <li>One-year (12-month) pilot supporting a single inaugural cohort of 6&ndash;12 companies</li>
+      <li>WFF grant funds 100% of cash program costs ($973,000); Arkade contributes ~$521,000 in-kind</li>
+      <li>In-kind match equals ~35% of total program value — roughly one in-kind dollar for every two grant dollars</li>
+      <li>Two WFF-funded hires: Program &amp; Education Manager and Communications Director; salaries loaded &times;1.2 for benefits and bonus</li>
+      <li>Administration held to ~10% of total program cost</li>
+      <li>All grant funds administered through SEED SPOT as fiduciary; quarterly reporting against KPIs</li>
+    </ul>
   </div>
 
   <div class="page-footer">
@@ -575,133 +523,100 @@
     <div class="page-num">02</div>
   </div>
 
-  <div class="section-title">Personnel — $1,010,724</div>
+  <div class="section-title">Personnel — $489,000</div>
   <table>
     <thead>
       <tr>
         <th>Position</th>
-        <th>L+L %</th>
-        <th>Y1</th>
-        <th>Y2</th>
-        <th>Y3</th>
-        <th>3-Yr Total</th>
+        <th class="basis">Basis</th>
         <th>WFF</th>
-        <th>Match</th>
+        <th>In-Kind</th>
+        <th>Total</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Head of Global Innovation Growth</td>
-        <td>100%</td>
+        <td>Program &amp; Education Manager</td>
+        <td class="basis">$80k base + benefits/bonus (&times;1.2)</td>
+        <td>$100,000</td>
+        <td>—</td>
+        <td>$100,000</td>
+      </tr>
+      <tr>
+        <td>Communications Director</td>
+        <td class="basis">$125k base + benefits/bonus (&times;1.2)</td>
         <td>$150,000</td>
-        <td>$154,500</td>
-        <td>$159,135</td>
-        <td>$463,635</td>
-        <td>$298,166</td>
-        <td>$165,470</td>
+        <td>—</td>
+        <td>$150,000</td>
       </tr>
       <tr>
-        <td>Member Education &amp; Programming Lead</td>
-        <td>100%</td>
-        <td>$120,000</td>
-        <td>$123,600</td>
-        <td>$127,308</td>
-        <td>$370,908</td>
-        <td>$238,532</td>
-        <td>$132,376</td>
+        <td>Arkade Director / Staff Allocation</td>
+        <td class="basis">Kathryn &amp; Zack support and engagement (in-kind)</td>
+        <td>—</td>
+        <td>$221,000</td>
+        <td>$221,000</td>
       </tr>
       <tr>
-        <td>Director of Portfolio Operations (25%)</td>
-        <td>25%</td>
-        <td>$45,000</td>
-        <td>$46,350</td>
-        <td>$47,741</td>
-        <td>$139,091</td>
-        <td>$89,450</td>
-        <td>$49,641</td>
-      </tr>
-      <tr>
-        <td>Event Coordination (contract)</td>
-        <td>50%</td>
-        <td>$12,000</td>
-        <td>$12,360</td>
-        <td>$12,731</td>
-        <td>$37,091</td>
-        <td>$23,853</td>
-        <td>$13,238</td>
+        <td>In-Person Event Logistics (contract)</td>
+        <td class="basis">$1,500/mo — Alex Victtoria Events retainer</td>
+        <td>$18,000</td>
+        <td>—</td>
+        <td>$18,000</td>
       </tr>
       <tr>
         <td>Personnel Subtotal</td>
-        <td></td>
-        <td>$327,000</td>
-        <td>$336,810</td>
-        <td>$346,914</td>
-        <td>$1,010,724</td>
-        <td>$650,001</td>
-        <td>$360,724</td>
+        <td class="basis"></td>
+        <td>$268,000</td>
+        <td>$221,000</td>
+        <td>$489,000</td>
       </tr>
     </tbody>
   </table>
 
-  <div class="section-title">Program Infrastructure — $371,294</div>
+  <div class="section-title">Program Infrastructure — $420,000</div>
   <table>
     <thead>
       <tr>
         <th>Item</th>
-        <th>L+L %</th>
-        <th>Y1</th>
-        <th>Y2</th>
-        <th>Y3</th>
-        <th>3-Yr Total</th>
+        <th class="basis">Basis</th>
         <th>WFF</th>
-        <th>Match</th>
+        <th>In-Kind</th>
+        <th>Total</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Occupancy (Base Rent, NNN, etc.)</td>
-        <td>25%</td>
-        <td>$88,125</td>
-        <td>$90,769</td>
-        <td>$93,492</td>
-        <td>$272,386</td>
-        <td>$175,172</td>
-        <td>$97,213</td>
+        <td>Workspace Allocation</td>
+        <td class="basis">$25k/mo — pro-rated Arkade facility use &amp; member badges (in-kind)</td>
+        <td>—</td>
+        <td>$300,000</td>
+        <td>$300,000</td>
       </tr>
       <tr>
-        <td>Research, Sourcing &amp; Network Tools</td>
-        <td>100%</td>
+        <td>Software &amp; Tools</td>
+        <td class="basis">Harmonic.ai, Luma Pro, Canva, Happenstance, Asana, Zoom</td>
         <td>$20,000</td>
-        <td>$20,600</td>
-        <td>$21,218</td>
-        <td>$61,818</td>
-        <td>$39,755</td>
-        <td>$22,063</td>
+        <td>—</td>
+        <td>$20,000</td>
       </tr>
       <tr>
-        <td>Channel Marketing &amp; Advertising</td>
-        <td>50%</td>
-        <td>$12,000</td>
-        <td>$12,360</td>
-        <td>$12,731</td>
-        <td>$37,091</td>
-        <td>$23,853</td>
-        <td>$13,238</td>
+        <td>General Marketing &amp; Advertising</td>
+        <td class="basis">Digital/print ads, targeted campaigns, welcome gifts</td>
+        <td>$100,000</td>
+        <td>—</td>
+        <td>$100,000</td>
       </tr>
       <tr>
         <td>Infrastructure Subtotal</td>
-        <td></td>
-        <td>$120,125</td>
-        <td>$123,729</td>
-        <td>$127,441</td>
-        <td>$371,294</td>
-        <td>$238,781</td>
-        <td>$132,513</td>
+        <td class="basis"></td>
+        <td>$120,000</td>
+        <td>$300,000</td>
+        <td>$420,000</td>
       </tr>
     </tbody>
   </table>
 
-  <p class="note">Utilities, professional fees, and operating software (Luma Pro, CRM, space management) are fully absorbed by Arkade at $60,000/yr and are excluded from the grant budget. Only the pro-rated Land + Launch allocation for occupancy, research and sourcing tools, and channel marketing is included above.</p>
+  <p class="note">The in-kind match is contributed entirely by Arkade: dedicated workspace at the Ledger Building ($300,000) and partial Director and staff time ($221,000), for a total in-kind contribution of $521,000.</p>
 
   <div class="page-footer">
     <span>Land + Launch NWA</span>
@@ -720,192 +635,143 @@
     <div class="page-num">03</div>
   </div>
 
-  <div class="section-title">Events &amp; Gatherings — $429,635</div>
+  <div class="section-title">Events &amp; Education — $271,000</div>
   <table>
     <thead>
       <tr>
-        <th>Event</th>
-        <th>L+L %</th>
-        <th>Y1</th>
-        <th>Y2</th>
-        <th>Y3</th>
-        <th>3-Yr Total</th>
+        <th>Event / Program</th>
+        <th class="basis">Basis</th>
         <th>WFF</th>
-        <th>Match</th>
+        <th>Total</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>BiteSized Conference (quarterly)</td>
-        <td>50%</td>
-        <td>$20,000</td>
-        <td>$20,600</td>
-        <td>$21,218</td>
-        <td>$61,818</td>
-        <td>$39,755</td>
-        <td>$22,063</td>
+        <td>Coffee Shop Network (bi-weekly)</td>
+        <td class="basis">$1k/event &times; 12</td>
+        <td>$12,000</td>
+        <td>$12,000</td>
       </tr>
       <tr>
         <td>Industry Education Workshops (monthly)</td>
-        <td>100%</td>
-        <td>$24,000</td>
-        <td>$24,720</td>
-        <td>$25,462</td>
-        <td>$74,182</td>
-        <td>$47,706</td>
-        <td>$26,475</td>
+        <td class="basis">$1k/event &times; 12</td>
+        <td>$12,000</td>
+        <td>$12,000</td>
       </tr>
       <tr>
-        <td>Bi-Annual NWA Tech Summit</td>
-        <td>100%</td>
-        <td>$70,000</td>
-        <td>$72,100</td>
-        <td>$74,263</td>
-        <td>$216,363</td>
-        <td>$139,144</td>
-        <td>$77,219</td>
-      </tr>
-      <tr>
-        <td>Bentonville Market Immersion Weeks</td>
-        <td>100%</td>
-        <td>$25,000</td>
-        <td>$25,750</td>
-        <td>$26,523</td>
-        <td>$77,273</td>
-        <td>$49,694</td>
-        <td>$27,578</td>
-      </tr>
-      <tr>
-        <td>Events Subtotal</td>
-        <td></td>
-        <td>$139,000</td>
-        <td>$143,170</td>
-        <td>$147,465</td>
-        <td>$429,635</td>
-        <td>$276,300</td>
-        <td>$153,335</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="section-title">Travel &amp; Outreach — $213,272</div>
-  <table>
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>L+L %</th>
-        <th>Y1</th>
-        <th>Y2</th>
-        <th>Y3</th>
-        <th>3-Yr Total</th>
-        <th>WFF</th>
-        <th>Match</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>International Outreach Travel</td>
-        <td>100%</td>
-        <td>$24,000</td>
-        <td>$24,720</td>
-        <td>$25,462</td>
-        <td>$74,182</td>
-        <td>$47,706</td>
-        <td>$26,475</td>
-      </tr>
-      <tr>
-        <td>Key Domestic Industry Events</td>
-        <td>100%</td>
-        <td>$24,000</td>
-        <td>$24,720</td>
-        <td>$25,462</td>
-        <td>$74,182</td>
-        <td>$47,706</td>
-        <td>$26,475</td>
-      </tr>
-      <tr>
-        <td>Inbound Summit Travel</td>
-        <td>100%</td>
-        <td>$21,000</td>
-        <td>$21,630</td>
-        <td>$22,279</td>
-        <td>$64,909</td>
-        <td>$41,743</td>
-        <td>$23,166</td>
-      </tr>
-      <tr>
-        <td>Travel Subtotal</td>
-        <td></td>
-        <td>$69,000</td>
-        <td>$71,070</td>
-        <td>$73,202</td>
-        <td>$213,272</td>
-        <td>$137,156</td>
-        <td>$76,116</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="section-title">Administration — $278,181</div>
-  <table>
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>L+L %</th>
-        <th>Y1</th>
-        <th>Y2</th>
-        <th>Y3</th>
-        <th>3-Yr Total</th>
-        <th>WFF</th>
-        <th>Match</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Program Administration &amp; Reporting (Chamber)</td>
-        <td>100%</td>
+        <td>Market Immersion Weeks (monthly)</td>
+        <td class="basis">$5k/mo &times; 12</td>
         <td>$60,000</td>
-        <td>$61,800</td>
-        <td>$63,654</td>
-        <td>$185,454</td>
-        <td>$119,266</td>
-        <td>$66,188</td>
+        <td>$60,000</td>
+      </tr>
+      <tr>
+        <td>BiteSized Conference (quarterly)</td>
+        <td class="basis">$18k/event &times; 4 ($8k media, $10k production)</td>
+        <td>$72,000</td>
+        <td>$72,000</td>
+      </tr>
+      <tr>
+        <td>Innovation Fellows (two semesters)</td>
+        <td class="basis">4 fellows/sem &times; 2 · $25/hr · 25 hr/wk · 12 wks</td>
+        <td>$60,000</td>
+        <td>$60,000</td>
+      </tr>
+      <tr>
+        <td>NWA Tech Summit Activation (annually)</td>
+        <td class="basis">VIP industry dinner or activation</td>
+        <td>$30,000</td>
+        <td>$30,000</td>
+      </tr>
+      <tr>
+        <td>Speaker, Mentor &amp; Advisor Honoraria</td>
+        <td class="basis">Guest experts, panelists, advisors across programming</td>
+        <td>$25,000</td>
+        <td>$25,000</td>
+      </tr>
+      <tr>
+        <td>Events &amp; Education Subtotal</td>
+        <td class="basis"></td>
+        <td>$271,000</td>
+        <td>$271,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Travel &amp; Transition Support — $174,000</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th class="basis">Basis</th>
+        <th>WFF</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Inbound International Travel (speakers, cohort/pipeline)</td>
+        <td class="basis">$8k/mo — stipends for speakers, mentors, immersion trips</td>
+        <td>$96,000</td>
+        <td>$96,000</td>
+      </tr>
+      <tr>
+        <td>Outbound for Key Industry Events</td>
+        <td class="basis">~$3k/pp — NRF, Manifest, ShopTalk, SXSW, etc.</td>
+        <td>$30,000</td>
+        <td>$30,000</td>
+      </tr>
+      <tr>
+        <td>Founder Relocation &amp; Landing Support</td>
+        <td class="basis">Legal &amp; immigration — entity formation, visa navigation</td>
+        <td>$48,000</td>
+        <td>$48,000</td>
+      </tr>
+      <tr>
+        <td>Travel &amp; Transition Subtotal</td>
+        <td class="basis"></td>
+        <td>$174,000</td>
+        <td>$174,000</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Administration (SEED SPOT fiduciary) — $140,000</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th class="basis">Basis</th>
+        <th>WFF</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Program Administration &amp; Reporting</td>
+        <td class="basis">~10% — grant administration, KPI reporting</td>
+        <td>$60,000</td>
+        <td>$60,000</td>
+      </tr>
+      <tr>
+        <td>Program Contingency</td>
+        <td class="basis">~5% reserve</td>
+        <td>$50,000</td>
+        <td>$50,000</td>
       </tr>
       <tr>
         <td>Fiscal Oversight &amp; Compliance</td>
-        <td>100%</td>
+        <td class="basis">Fiduciary oversight</td>
         <td>$30,000</td>
-        <td>$30,900</td>
-        <td>$31,827</td>
-        <td>$92,727</td>
-        <td>$59,633</td>
-        <td>$33,094</td>
+        <td>$30,000</td>
       </tr>
       <tr>
         <td>Administration Subtotal</td>
-        <td></td>
-        <td>$90,000</td>
-        <td>$92,700</td>
-        <td>$95,481</td>
-        <td>$278,181</td>
-        <td>$178,899</td>
-        <td>$99,282</td>
+        <td class="basis"></td>
+        <td>$140,000</td>
+        <td>$140,000</td>
       </tr>
     </tbody>
   </table>
-
-  <div class="assumptions">
-    <div class="assumptions-title">Budget Assumptions</div>
-    <ul>
-      <li>3% annual inflation applied across all line items</li>
-      <li>Year 1 is 100% WFF-funded to build infrastructure and engage the first cohort</li>
-      <li>Year 2 tapers to 65% WFF / 35% Arkade + Chamber match</li>
-      <li>Year 3 tapers to 30% WFF / 70% earned revenue, sponsorship, and match</li>
-      <li>Arkade absorbs $60,000/yr in utilities, legal, accounting, and operating software outside the grant budget</li>
-      <li>All grant funds administered through the Chamber as fiduciary; quarterly reporting against KPIs</li>
-      <li>Monthly equal distribution within each budget category</li>
-    </ul>
-  </div>
 
   <div class="page-footer">
     <span>Land + Launch NWA</span>
